@@ -1,0 +1,37 @@
+//@version=4
+study(title="(10. OB) Order Blocks (5)", overlay=true, max_bars_back=1000)
+
+// ... (остальной код)
+
+// functions
+structureLowIndexPointer(len) =>
+    float minValue = highest(high, range)[1]
+    int minIndex = bar_index
+    for i = 1 to len
+        if low[i] < minValue
+            minValue := low[i]
+            minIndex := bar_index[i]
+    minIndex
+
+// get the lowest point in the range
+structureLow = lowest(low, range)[1]
+structureLowIndex = structureLowIndexPointer(range)
+
+// ... (остальной код)
+
+// record last up and down candles
+if (close < open)
+    lastDown = high
+    lastDownIndex = bar_index
+    lastLow = low
+
+if (close > open)
+    lastUp = close
+    lastUpIndex = bar_index
+    lastUpOpen = open
+    lastUpLow = low
+    lastHigh = high
+
+// output timestamp (Unix timestamp) as label
+timestampLabel = tostring(timestamp(year, month, dayofmonth, hour, minute, second))
+label.new(bar_index, high, text=timestampLabel, color=color.white, textcolor=color.black)
