@@ -34,7 +34,7 @@ Generates and displays a candlestick chart with order block indicators.
 Example
 python
 Copy code
-symbol = "AAPL"
+symbol = "MSFT"
 start_date = "2022-01-01"
 end_date = "2022-12-31"
 
