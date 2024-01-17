@@ -1,7 +1,7 @@
-
+//@version=4
 study(title="Order Blocks Indicator", overlay=true)
 
-// Ваши настройки
+// Your settings
 range_value = input(15, title="Candle Range", minval=5, maxval=100)
 
 var float structureLow = na
@@ -27,7 +27,7 @@ var float[] longBoxes = array.new_float(na)
 PDH = request.security(syminfo.tickerid, "D", high[1])
 PDL = request.security(syminfo.tickerid, "D", low[1])
 
-// Идентификация блоков
+// Identify blocks
 structureLowIndexPointer(len) =>
     float minValue = highest(high, len)[1]
     int minIndex = bar_index
@@ -77,7 +77,7 @@ if (array.size(longBoxes) > 0)
         // remove the long box
         array.remove(longBoxes, i)
 
-// candle colouring
-CandleColour = CandleColourMode == 1 ? color.green : color.red
-CandleColour := BosCandle ? color.yellow : CandleColour
-barcolor(CandleColour)
+// candle coloring
+CandleColour = CandleColourMode == 1 ? color.new(color.green, 90) : color.new(color.red, 90)
+CandleColour := BosCandle ? color.new(color.yellow, 90) : CandleColour
+bgcolor(CandleColour)
