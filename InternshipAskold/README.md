@@ -1,49 +1,42 @@
-# Order Blocks Indicator
+Stock Chart Analysis
+This Python project leverages Yahoo Finance data and Plotly to analyze stock price trends, showcasing candlestick charts with custom indicators.
 
-This Python script utilizes Yahoo Finance data and Plotly to visualize order blocks on candlestick charts.
+Installation
+libraries:
 
-## Installation
-
-To use this script, you need to have Python installed on your machine. Install the required libraries by running:
-
-```bash
 pip install -r requirements.txt
-
-Open the app.py file and set the desired parameters such as symbol, start_date, and end_date.
-
 Run the script:
+
 python app.py
 
-The script will download historical data, identify order blocks, and generate a candlestick chart with order block indicators.
+The script downloads historical data, identifies rapid price growth, and generates a candlestick chart with indicators.
 
-Class: TechnicalIndicatorPlotter
+Class: StockChart
 Initialization
-python
-Copy code
-indicator = TechnicalIndicatorPlotter(symbol: str, start_date: str, end_date: str, range_value: int = 15)
+from stock_chart_analysis import StockChart
+
+symbol = "AAPL"
+start_date = "2023-01-01"
+end_date = "2024-01-28"
+
+stock_chart = StockChart(symbol, start_date, end_date)
 Methods
-download_data()
-Downloads historical data from Yahoo Finance.
+update_layout()
+stock_chart.update_layout()
+Configures the layout of the chart.
 
-identify_boxes()
-Identifies order blocks based on historical data.
-
-plot_indicator()
-Generates and displays a candlestick chart with order block indicators.
+show_chart()
+stock_chart.show_chart()
+Displays the candlestick chart with custom indicators.
 
 Example
-python
-Copy code
-symbol = "MSFT"
-start_date = "2022-01-01"
-end_date = "2022-12-31"
+symbol = "AAPL"
+start_date = "2023-01-01"
+end_date = "2024-01-28"
 
-indicator = TechnicalIndicatorPlotter(symbol, start_date, end_date)
-indicator.download_data()
-indicator.identify_boxes()
-indicator.plot_indicator()
-
+stock_chart = StockChart(symbol, start_date, end_date)
+stock_chart.update_layout()
+stock_chart.show_chart()
 
 Author
-Askold Onishchenko
-
+askold onishchenko
